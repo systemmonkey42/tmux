@@ -4598,14 +4598,8 @@ window_copy_get_selection(struct window_mode_entry *wme, size_t *len)
 			selx = data->endselx;
 		if (selx < data->cx) {
 			/* Selection start is on the left. */
-			if (keys == MODEKEY_EMACS) {
-				lastex = data->cx;
-				restex = data->cx;
-			}
-			else {
-				lastex = data->cx + 1;
-				restex = data->cx + 1;
-			}
+			lastex = data->cx + 1;
+			restex = data->cx + 1;
 			firstsx = selx;
 			restsx = selx;
 		} else {
@@ -4616,9 +4610,6 @@ window_copy_get_selection(struct window_mode_entry *wme, size_t *len)
 			restsx = data->cx;
 		}
 	} else {
-		if (keys == MODEKEY_EMACS)
-			lastex = ex;
-		else
 			lastex = ex + 1;
 		restex = xx;
 		firstsx = sx;
